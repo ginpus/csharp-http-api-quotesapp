@@ -19,5 +19,7 @@ namespace csharp_http_api_quotesapp.Persistence
         Task<HttpResponseMessage> PostQuote(string author, string quote, string userToken);
 
         Task<HttpResponseMessage> FavQuote(int id, string userToken);
+
+        Task<HttpResponseMessage> UnFavQuote(int id, string userToken);
     }
 }

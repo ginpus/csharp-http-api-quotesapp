@@ -41,10 +41,6 @@ namespace csharp_http_api_quotesapp.Persistence
                 {
                     Login = login,
                     Password = password
-                    /*
-
-                                        Login = login,
-                                        Password = password*/
                 }
             };
             const string url = "/api/session";
@@ -77,31 +73,39 @@ namespace csharp_http_api_quotesapp.Persistence
 
             var response = await _httpClient.SendAsync(request);
 
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            var responseContents = await response.Content.ReadAsStringAsync();
+
+            //Console.WriteLine(responseContents);
 
             return response;
         }
 
         public async Task<HttpResponseMessage> FavQuote(int id, string userToken)
         {
-            var url = $"/api/{id.ToString()}/fav";
-
-            /*            var quoteObj = new PostQuote
-                        {
-                            Quote = new PostQuoteContent
-                            {
-                                Author = author,
-                                Body = quote
-                            }
-                        };*/
-
-            //var quoteJson = JsonSerializer.Serialize(quoteObj);
+            var url = $"/api/quotes/{id}/fav";
 
             var request = new HttpRequestMessage();
 
             request.RequestUri = new Uri(_httpClient.BaseAddress, url);
             request.Method = HttpMethod.Put;
-            //request.Content = new StringContent(quoteJson, Encoding.UTF8, "application/json");
+
+            request.Headers.Add("User-Token", userToken);
+
+            var response = await _httpClient.SendAsync(request);
+
+            Console.WriteLine(await response.Content.ReadAsStringAsync());
+
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> UnFavQuote(int id, string userToken)
+        {
+            var url = $"/api/quotes/{id}/unfav";
+
+            var request = new HttpRequestMessage();
+
+            request.RequestUri = new Uri(_httpClient.BaseAddress, url);
+            request.Method = HttpMethod.Put;
 
             request.Headers.Add("User-Token", userToken);
 

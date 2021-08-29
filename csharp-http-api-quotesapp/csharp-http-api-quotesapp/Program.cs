@@ -17,61 +17,95 @@ namespace csharp_http_api_quotesapp
 
             var favQuotesClient = serviceProvider.GetService<IFavQuotesClient>();
 
-            /*            Console.WriteLine("----------Get all quotes----------");
-                        var quotes = await favQuotesClient.ShowAllQuotes();
+            while (true)
+            {
+                Console.WriteLine("User:");
+                var login = Console.ReadLine();
+                Console.WriteLine("Password:");
+                var password = Console.ReadLine();
 
-                        //Console.WriteLine(quotes);
+                var user = await favQuotesClient.CreateUserSession(login, password);
 
-                        foreach (var quote in quotes.Quotes)
-                        {
-                            Console.WriteLine(quote);
-                        }
+                var userToken = user.UserToken;
 
-                        Console.WriteLine("----------Get single quote----------");
-                        Console.WriteLine("Select quote ID:");
-                        var selectedQuoteId = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(userToken);
+                while (true)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Available commands:");
+                    Console.WriteLine("1 - Get all quotes");
+                    Console.WriteLine("2 - Get single quote");
+                    Console.WriteLine("3 - Post a quote");
+                    Console.WriteLine("4 - Fav a quote");
+                    Console.WriteLine("5 - Unfav a quote");
+                    Console.WriteLine("6 - Exit");
 
-                        var quoteById = await favQuotesClient.ShowQuoteById(selectedQuoteId);
+                    var chosenCommand = Console.ReadLine();
+                    switch (chosenCommand)
+                    {
+                        case "1":
+                            var quotes = await favQuotesClient.ShowAllQuotes();
 
-                        Console.WriteLine(quoteById);*/
+                            foreach (var quote in quotes.Quotes)
+                            {
+                                Console.WriteLine(quote);
+                            }
+                            break;
 
-            Console.WriteLine("----------Create user session----------");
-            Console.WriteLine("User:");
-            var login = Console.ReadLine();
-            Console.WriteLine("Password:");
-            var password = Console.ReadLine();
+                        case "2":
+                            Console.WriteLine("Select quote ID:");
+                            var selectedQuoteId = Convert.ToInt32(Console.ReadLine());
 
-            var user = await favQuotesClient.CreateUserSession(login, password);
+                            var quoteById = await favQuotesClient.ShowQuoteById(selectedQuoteId);
 
-            var userToken = user.UserToken;
+                            Console.WriteLine(quoteById);
+                            break;
 
-            Console.WriteLine(userToken);
+                        case "3":
+                            Console.WriteLine("Author:");
+                            var author = Console.ReadLine();
+                            Console.WriteLine("Quote body:");
+                            var body = Console.ReadLine();
 
-            /*            Console.WriteLine("----------Post a quote----------");
+                            var response = await favQuotesClient.PostQuote(author, body, user.UserToken);
+                            //Console.WriteLine(response.EnsureSuccessStatusCode());
+                            var quoteResponse = response.Content.ReadFromJsonAsync<QuoteResponse>();
 
-                        Console.WriteLine("Author:");
-                        var author = Console.ReadLine();
-                        Console.WriteLine("Quote body:");
-                        var body = Console.ReadLine();
+                            Console.WriteLine(quoteResponse);
+                            //Console.WriteLine(await response.Content.ReadAsStringAsync());
+                            break;
 
-                        var response = await favQuotesClient.PostQuote(author, body, user.UserToken);
-                        //Console.WriteLine(response.EnsureSuccessStatusCode());
-                        var quoteResponse = response.Content.ReadFromJsonAsync<QuoteResponse>();
+                        case "4":
+                            Console.WriteLine("Quote of ID to fav:");
+                            var idFav = Convert.ToInt32(Console.ReadLine());
 
-                        Console.WriteLine(quoteResponse);
-                        //Console.WriteLine(await response.Content.ReadAsStringAsync());*/
+                            var responseFav = await favQuotesClient.FavQuote(idFav, user.UserToken);
 
-            Console.WriteLine("----------Fav a quote----------");
+                            var quoteResponseFav = responseFav.Content.ReadFromJsonAsync<FavQuoteResponse>();
 
-            Console.WriteLine("Quote of ID to fav:");
-            var idFav = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine();
+                            Console.WriteLine(await quoteResponseFav);
+                            Console.WriteLine();
+                            break;
 
-            var responseFav = await favQuotesClient.FavQuote(idFav, user.UserToken);
-            //Console.WriteLine(response.EnsureSuccessStatusCode());
-            var quoteResponseFav = responseFav.Content.ReadFromJsonAsync<QuoteResponse>();
+                        case "5":
+                            Console.WriteLine("Quote of ID to unfav:");
+                            var idUnFav = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine(quoteResponseFav);
-            //Console.WriteLine(await response.Content.ReadAsStringAsync());
+                            var responseUnFav = await favQuotesClient.UnFavQuote(idUnFav, user.UserToken);
+
+                            var quoteResponseUnFav = responseUnFav.Content.ReadFromJsonAsync<FavQuoteResponse>();
+
+                            Console.WriteLine();
+                            Console.WriteLine(await quoteResponseUnFav);
+                            Console.WriteLine();
+                            break;
+
+                        case "6":
+                            return;
+                    }
+                }
+            }
         }
     }
 }
