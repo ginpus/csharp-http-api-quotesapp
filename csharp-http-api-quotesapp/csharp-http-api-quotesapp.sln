@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-http-api-quotesapp", "csharp-http-api-quotesapp\csharp-http-api-quotesapp.csproj", "{D3D04AD0-C3B6-409E-965F-530C33702226}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3D04AD0-C3B6-409E-965F-530C33702226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D04AD0-C3B6-409E-965F-530C33702226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D04AD0-C3B6-409E-965F-530C33702226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D04AD0-C3B6-409E-965F-530C33702226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B32B3CF0-600F-424E-B0C3-25BB02DFD8D7}
+	EndGlobalSection
+EndGlobal

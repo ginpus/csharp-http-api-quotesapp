@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "fUn6eXEwC7dvK4uqml2C4X4c4x0uC72w5cR/nIA93dvsOVaSwTseZ+q1gSEZtGU2Vg2hBjmS5SQKrCLuHzy5vA==",
+  "success": true,
+  "projectFilePath": "F:\\Desktop\\dotNET\\C#\\8.25\\csharp-http-api-quotesapp\\csharp-http-api-quotesapp\\csharp-http-api-quotesapp\\csharp-http-api-quotesapp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.http\\5.0.0\\microsoft.extensions.http.5.0.0.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
